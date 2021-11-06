@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { prioridadeType } from 'src/app/shared/enums/prioridadeEnum';
 import { Tarefa } from 'src/app/shared/model/Tarefa';
+import { TarefaService } from '../services/tarefa.service';
 
 @Component({
   selector: 'app-tarefa-editar',
@@ -13,12 +15,15 @@ export class TarefaEditarComponent implements OnInit {
   cadastroForm: FormGroup
   tarefa: Tarefa
   id: any;
+  
+  tipos = prioridadeType
+  prioridade: any[];
 
-  constructor(private _Activatedroute: ActivatedRoute) { }
+  constructor(private _Activatedroute: ActivatedRoute, private servico : TarefaService) { }
 
   ngOnInit(): void {
     this.id = this._Activatedroute.snapshot.paramMap.get("id")
-    console.log(this.id)
+
     this.obterTarefa()
 
     this.cadastroForm = new FormGroup({
@@ -32,10 +37,11 @@ export class TarefaEditarComponent implements OnInit {
   }
 
   editarTarefa() {
-    console.log(this.cadastroForm.value)
+    this.tarefa = Object.assign({}, this.tarefa, this.cadastroForm.value)
+    this.servico.atualizarTarefa(this.tarefa)
   }
 
   obterTarefa() {
-    this.tarefa = new Tarefa(1, 'correr', 2, new Date(2020, 5, 9), 0, new Date(2020, 5, 9));
+    this.tarefa = this.servico.obterTarefa(this.id)
   }
 }

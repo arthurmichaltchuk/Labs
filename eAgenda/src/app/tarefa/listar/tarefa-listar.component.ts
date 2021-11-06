@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { prioridadeType } from 'src/app/shared/enums/prioridadeEnum';
 import { Tarefa } from 'src/app/shared/model/Tarefa';
+import { TarefaService } from '../services/tarefa.service';
 
 @Component({
   selector: 'app-tarefa-listar',
@@ -10,32 +12,18 @@ export class TarefaListarComponent implements OnInit {
   titulo: string = "Listar Tarefa";
   listaTarefa: Tarefa[] = [];
 
-  constructor() { }
+  constructor(private servico : TarefaService) { }
 
   ngOnInit(): void {
-    this.obterTarefa()
+    this.obterTarefas()
   }
 
-  obterTarefa(){
-    this.listaTarefa.push(new Tarefa(1, 'correr', 2, new Date(2020, 5, 9), 0, new Date(2020, 5, 9)))
-    this.listaTarefa.push(new Tarefa(2, 'correr', 2, new Date(2020, 5, 9), 0, new Date(2020, 5, 9)))
-    this.listaTarefa.push(new Tarefa(3, 'correr', 2, new Date(2020, 5, 9), 0, new Date(2020, 5, 9)))
-    this.listaTarefa.push(new Tarefa(4, 'correr', 2, new Date(2020, 5, 9), 0, new Date(2020, 5, 9)))
-    this.listaTarefa.push(new Tarefa(5, 'correr', 2, new Date(2020, 5, 9), 0, new Date(2020, 5, 9)))
+  obterTarefas(){
+    this.listaTarefa = this.servico.obterTarefas()
   }
 
   converterPrioridade(tipo : number): string{
-    if (tipo == 0)
-      return "Baixa";
-    
-    if (tipo == 1)
-      return "Normal";
-
-    if (tipo == 2)
-      return "Alta";
-
-    else 
-      return ""
+    return prioridadeType[tipo]
   }
 
 }
