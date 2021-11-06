@@ -24,9 +24,9 @@ export class TarefaEditarComponent implements OnInit {
     this.cadastroForm = new FormGroup({
       titulo: new FormControl(this.tarefa.titulo),
       prioridade: new FormControl(this.tarefa.prioridade),
-      dataCriacao: new FormControl(this.tarefa.dataCriacao.toISOString().substring(0.10)),
+      dataCriacao: new FormControl(this.tarefa.dataCriacao.toISOString().substring(0,16)),
       percentual: new FormControl(this.tarefa.percentual),
-      dataConclusao: new FormControl(this.tarefa.dataConclusao.toISOString().substring(0.10))
+      dataConclusao: new FormControl(this.tarefa.dataConclusao.toISOString().substring(0,16))
     })
 
   }

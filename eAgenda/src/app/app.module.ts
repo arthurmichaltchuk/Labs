@@ -8,6 +8,7 @@ import { TarefaCriarComponent } from './tarefa/criar/tarefa-criar.component';
 import { FuncionarioCriarComponent } from './funcionario/criar/funcionario-criar.component';
 import { FuncionarioListarComponent } from './funcionario/listar/funcionario-listar.component';
 import { TarefaEditarComponent } from './tarefa/editar/tarefa-editar.component';
+import { TarefaListarComponent } from './tarefa/listar/tarefa-listar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TarefaEditarComponent } from './tarefa/editar/tarefa-editar.component';
     TarefaCriarComponent,
     FuncionarioCriarComponent,
     FuncionarioListarComponent,
-    TarefaEditarComponent
+    TarefaEditarComponent,
+    TarefaListarComponent
   ],
   imports: [
     BrowserModule,

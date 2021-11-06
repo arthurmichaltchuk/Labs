@@ -338,13 +338,13 @@
       <span>Home</span>
     </button>
 
-    <button class="card card-small" tabindex="0" routerLink="/tarefa/criar">
+    <button class="card card-small" tabindex="0" routerLink="/funcionario/criar">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
       </svg>
-      <span>Criar Tarefa</span>
+      <span>Criar Funcionário</span>
     </button>
-
+        
     <button class="card card-small" tabindex="0" routerLink="/funcionario/listar">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
@@ -352,14 +352,21 @@
       <span>Listar Funcionário</span>
     </button>
 
-    <button class="card card-small" tabindex="0" routerLink="/funcionario/criar">
+    <button class="card card-small" tabindex="0" routerLink="/tarefa/criar">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
       </svg>
-      <span>Criar Funcionário</span>
+      <span>Criar Tarefa</span>
     </button>
 
-    <button class="card card-small" tabindex="0" [routerLink]="['/tarefa/editar', tarefaSelecionado]">
+    <button class="card card-small" tabindex="0" routerLink="tarefa/listar">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+      </svg>
+      <span>Listar Tarefas</span>
+    </button>
+
+    <button class="card card-small" tabindex="0" [routerLink]="['/tarefa/editar', tarefaSelecionada]">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
       </svg>
