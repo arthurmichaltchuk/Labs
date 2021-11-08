@@ -9,7 +9,7 @@ import { TarefaService } from '../services/tarefa.service';
 })
 export class TarefaListarComponent implements OnInit {
 
-  titulo: string = "Listar Tarefa";
+  titulo: string = "Listar Tarefas";
   listaTarefa: Tarefa[] = [];
 
   constructor(private servico : TarefaService) { }

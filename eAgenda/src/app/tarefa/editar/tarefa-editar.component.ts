@@ -14,16 +14,17 @@ export class TarefaEditarComponent implements OnInit {
   titulo: string = "Editar Tarefa"
   cadastroForm: FormGroup
   tarefa: Tarefa
-  id: any;
+  id: any
   
   tipos = prioridadeType
-  prioridade: any[];
+  prioridades: any[]
 
   constructor(private _Activatedroute: ActivatedRoute, private servico : TarefaService) { }
 
   ngOnInit(): void {
+    
+    this.prioridades = Object.keys(this.tipos).filter(t => !isNaN(Number(t)));
     this.id = this._Activatedroute.snapshot.paramMap.get("id")
-
     this.obterTarefa()
 
     this.cadastroForm = new FormGroup({

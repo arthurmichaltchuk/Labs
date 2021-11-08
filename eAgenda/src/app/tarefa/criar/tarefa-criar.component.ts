@@ -10,7 +10,7 @@ import { TarefaService } from '../services/tarefa.service';
 })
 export class TarefaCriarComponent implements OnInit {
 
-  titulo : string = "Cadastrar Compromisso"
+  titulo : string = "Cadastrar Tarefa"
   cadastroForm: FormGroup
   tarefa : Tarefa
 
