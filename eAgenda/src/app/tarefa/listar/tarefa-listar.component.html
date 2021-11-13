@@ -4,6 +4,7 @@
 
 <table>
     <thead>
+        <th scope="col">Id</th>        
         <th scope="col">Título</th>
         <th scope="col">Prioridade</th>
         <th scope="col">Data Criação</th>
@@ -12,12 +13,12 @@
     </thead>
     <tbody>
         <tr *ngFor="let tarefa of listaTarefa">
+            <td>{{tarefa.id}}</td>
             <td>{{tarefa.titulo}}</td>
-            <td>{{converterPrioridade(tarefa.prioridade)}}</td>
+            <td>{{tarefa.prioridade}}</td>
             <td>{{tarefa.dataCriacao | date: 'dd/MM/yyyy'}}</td>
             <td>{{tarefa.percentual}}</td>
             <td>{{tarefa.dataConclusao | date: 'dd/MM/yyyy'}}</td>
         </tr>
-
     </tbody>
 </table>

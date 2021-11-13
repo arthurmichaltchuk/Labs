@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { prioridadeType } from 'src/app/shared/enums/prioridadeEnum';
+import { ITarefaService } from 'src/app/shared/interfaces/ITarefaService';
 import { Tarefa } from 'src/app/shared/model/Tarefa';
-import { TarefaService } from '../services/tarefa.service';
 
 @Component({
   selector: 'app-tarefa-listar',
@@ -12,7 +12,7 @@ export class TarefaListarComponent implements OnInit {
   titulo: string = "Listar Tarefas";
   listaTarefa: Tarefa[] = [];
 
-  constructor(private servico : TarefaService) { }
+  constructor(@Inject('ITarefaServiceToken') private servico : ITarefaService) { }
 
   ngOnInit(): void {
     this.obterTarefas()
@@ -26,4 +26,7 @@ export class TarefaListarComponent implements OnInit {
     return prioridadeType[tipo]
   }
 
+  formatarData(data : Date): string{
+    return new Date(data).toLocaleDateString();
+  }
 }

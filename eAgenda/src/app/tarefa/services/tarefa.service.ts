@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { ITarefaService } from 'src/app/shared/interfaces/ITarefaService';
 import { Tarefa } from 'src/app/shared/model/Tarefa';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TarefaService {
+export class TarefaService implements ITarefaService{
 
   constructor() { }
 
@@ -12,8 +13,7 @@ export class TarefaService {
     console.log(tarefa)
   }
 
-  public obterTarefa(tarefaId : string): Tarefa{
-    console.log(tarefaId)
+  public obterTarefa(tarefaId : number): Tarefa{
     var tarefa = new Tarefa(1, 'voar', 2, new Date(2020, 5, 9), 10, new Date(2020, 5, 9));
     return tarefa
   }
@@ -32,5 +32,9 @@ export class TarefaService {
     listaTarefas.push(new Tarefa(5, 'correr', 0, new Date(2020, 5, 9), 70, new Date(2020, 5, 9)))
 
     return listaTarefas
+  }
+
+  excluirTarefa(tarefaId: number): void{
+
   }
 }

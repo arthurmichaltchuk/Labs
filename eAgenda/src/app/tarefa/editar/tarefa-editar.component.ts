@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { prioridadeType } from 'src/app/shared/enums/prioridadeEnum';
+import { ITarefaService } from 'src/app/shared/interfaces/ITarefaService';
 import { Tarefa } from 'src/app/shared/model/Tarefa';
-import { TarefaService } from '../services/tarefa.service';
 
 @Component({
   selector: 'app-tarefa-editar',
@@ -19,7 +19,8 @@ export class TarefaEditarComponent implements OnInit {
   tipos = prioridadeType
   prioridades: any[]
 
-  constructor(private _Activatedroute: ActivatedRoute, private servico : TarefaService) { }
+  constructor(private _Activatedroute: ActivatedRoute, 
+    @Inject('ITarefaServiceToken') private servico : ITarefaService) { }
 
   ngOnInit(): void {
     
@@ -30,9 +31,9 @@ export class TarefaEditarComponent implements OnInit {
     this.cadastroForm = new FormGroup({
       titulo: new FormControl(this.tarefa.titulo),
       prioridade: new FormControl(this.tarefa.prioridade),
-      dataCriacao: new FormControl(this.tarefa.dataCriacao.toISOString().substring(0,16)),
+      dataCriacao: new FormControl(this.tarefa.dataCriacao),
       percentual: new FormControl(this.tarefa.percentual),
-      dataConclusao: new FormControl(this.tarefa.dataConclusao.toISOString().substring(0,16))
+      dataConclusao: new FormControl(this.tarefa.dataConclusao)
     })
 
   }

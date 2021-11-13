@@ -9,6 +9,7 @@ import { FuncionarioCriarComponent } from './funcionario/criar/funcionario-criar
 import { FuncionarioListarComponent } from './funcionario/listar/funcionario-listar.component';
 import { TarefaEditarComponent } from './tarefa/editar/tarefa-editar.component';
 import { TarefaListarComponent } from './tarefa/listar/tarefa-listar.component';
+import { LocalStorageTarefaService } from './tarefa/services/local-storage-tarefa.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { TarefaListarComponent } from './tarefa/listar/tarefa-listar.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: 'ITarefaServiceToken', useClass: LocalStorageTarefaService},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
