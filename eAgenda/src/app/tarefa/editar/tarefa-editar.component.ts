@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { prioridadeType } from 'src/app/shared/enums/prioridadeEnum';
 import { ITarefaService } from 'src/app/shared/interfaces/ITarefaService';
 import { Tarefa } from 'src/app/shared/model/Tarefa';
@@ -20,7 +20,8 @@ export class TarefaEditarComponent implements OnInit {
   prioridades: any[]
 
   constructor(private _Activatedroute: ActivatedRoute, 
-    @Inject('ITarefaServiceToken') private servico : ITarefaService) { }
+    @Inject('ITarefaServiceToken') private servico : ITarefaService,
+    private router : Router ) { }
 
   ngOnInit(): void {
     
@@ -40,10 +41,16 @@ export class TarefaEditarComponent implements OnInit {
 
   editarTarefa() {
     this.tarefa = Object.assign({}, this.tarefa, this.cadastroForm.value)
-    this.servico.atualizarTarefa(this.tarefa)
+    this.servico.atualizarTarefa(this.tarefa);
+    
+    this.router.navigate(['tarefa/listar']);
   }
 
   obterTarefa() {
     this.tarefa = this.servico.obterTarefa(this.id)
+  }
+
+  cancelar(){
+    this.router.navigate(['tarefa/listar']);
   }
 }
